@@ -12,14 +12,16 @@ ctrltask.getTasks =async (req, res)=>{
 }
 
 ctrltask.postTasks = async (req, res)=>{
-    const {title, date, descripcion} = req.body
+    const {title,descripcion} = req.body
     const newTask = new taskmodel({
-        title,date,descripcion
+        title,
+        descripcion
     })
     const tarearegistrada = await newTask.save()
     res.send({
         message: "Peticion POST",tarearegistrada
     })
+    
 }
 
 ctrltask.putTasks = (req, res)=>{
