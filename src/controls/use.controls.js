@@ -1,3 +1,4 @@
+const Usermodel = require("../models/User")
 const ctrlUser = {}
 
 ctrlUser.getHome = (req, res)=>{
@@ -6,16 +7,22 @@ ctrlUser.getHome = (req, res)=>{
     })
 }
 
-ctrlUser.getUser = ((req, res)=>{
+ctrlUser.getUser = async(req, res)=>{
+    const Users = await Usermodel.find()
     res.send({
-        nombre: "guillermo",
-        apellido:"lee"
+        message:"Usuarios encontrados",
+        Users
     })
-})
+}
 
-ctrlUser.postHome = (req, res)=>{
+ctrlUser.postHome = async (req, res)=>{
+    const {name, email, password} = req.body
+    const newuser = new Usermodel({
+        name,email,password
+    })
+    const useregisted = await newuser.save()
     res.send({
-        message: "Peticion POST"
+        message: "Peticion POST",useregisted
     })
 }
 

@@ -1,14 +1,7 @@
 const router = require("express").Router();
 
-const {
-    getHome, 
-    getUser,
-    postHome, 
-    putHome, 
-    deleteHome} = require("../controls/use.controls")
+const {getHome, getUser, postHome, putHome, deleteHome} = require("../controls/use.controls")
 
-
-router.get("/", getHome)
 
 router.get("/user", getUser)
 
