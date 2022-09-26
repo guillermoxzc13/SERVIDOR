@@ -19,7 +19,7 @@ app.use(express.json())
 
 app.use(cors())
 
-app.use(morgan())
+app.use(morgan("combined"))
 
 
 // Recursos estáticos

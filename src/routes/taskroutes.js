@@ -14,8 +14,8 @@ routertask.get("/task", getTasks)
 
 routertask.post("/task", postTasks)
 
-routertask.put("/task", putTasks)
+routertask.put("/task/:id", putTasks)
 
-routertask.delete("/task", deleteTasks)
+routertask.delete("/task/:id", deleteTasks)
 
 module.exports = routertask;

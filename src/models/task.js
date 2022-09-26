@@ -2,6 +2,7 @@ const {Schema,model} = require("mongoose");
 
 
 const taskSchema = new Schema({
+    
     title:{
         type:String,
         max:50
