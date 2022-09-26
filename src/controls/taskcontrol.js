@@ -27,30 +27,28 @@ ctrltask.postTasks = async (req, res)=>{
 
 ctrltask.putTasks = async(req, res)=>{
     const id = req.params.id 
+    const {title,descripcion}= req.body
     try {
-        await taskmodel.findByIdAndUpdate(id, function (err, docs){
-            if (err){
-                res.json("no se pudo actualiza")
-            }
-            else{
-                res.json("se actualizo con exito", docs)
+        await taskmodel.updateOne({_id: id}, {
+            $set:{
+                title,
+                descripcion
             }
         })
+
+        res.json("Actualizado");
     } catch (err) {
-        res.josn(err)
+        res.json(err)
     }
 }
 
 ctrltask.deleteTasks = async(req, res)=>{
     const id = req.params.id
-    try{await taskmodel.findByIdAndDelete(id, function (err, docs) {
-        if (err){
-            res.json("no se pudo eliminar")
-        }
-        else{
-            console.log("se elimino con exito", docs);
-        }
-    });}
+    try{
+        await taskmodel.findByIdAndDelete(id)
+
+        res.json("eliminado")
+    }
 
     catch(err){
         console.log(err)
